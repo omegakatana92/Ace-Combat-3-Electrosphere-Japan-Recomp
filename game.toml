@@ -1,0 +1,65 @@
+# Autofilled by tools/new_project_layout/probe_disc.py from your legal dump.
+# Review before shipping. Runtime quirks / overlay seeds still need hand work.
+
+[game]
+name = "Ace Combat 3: Electrosphere"
+id = "SLPS-02020"
+players = 1
+exe = "disc/SLPS_020.20"
+discs = [
+    "disc/Disc1.cue",
+    "disc/Disc2.cue",
+]
+disc_serials = [
+    "SLPS-02020",
+    "SLPS-02021",
+]
+load_address = "0x80120000"
+entry_pc = "0x801255AC"
+text_size = "0x00075000"
+stack_base = "0x801FFFF0"
+
+# Digests are for data Track 01 (first BINARY FILE / TRACK 01).
+[prepare_disc]
+out_dir = "disc"
+bin_name = "Ace Combat 3 Electrosphere (Japan) [Disc 2].bin"
+cue_name = "Ace Combat 3 Electrosphere (Japan)[Disc 1].cue"
+boot_exe = "SLPS_020.20"
+known_sizes = [715238496]
+known_md5 = [
+  "deca6b0cf45d4358a3ec1a13817df04a",
+]
+known_sha1 = [
+  "d0cd75f4dc9683f3f2d571cf157c2c4c7e5ace56",
+]
+known_crc32 = [
+  "a5889f97",
+]
+
+[recompiler]
+seeds = "seeds/ghidra_funcs.txt"
+out_dir = "disc"
+strict = true
+
+[runtime]
+window_title = "Ace Combat 3: Electrosphere Recompiled"
+memcard_dir = "saves"
+overlay_cache = true
+
+[video]
+renderer = "opengl"
+aspect_ratio = "4:3"
+
+[controller]
+default_mode = "digital"
+
+# Online mount gate: digests + track count + optional TOC fingerprint
+# (see docs/NETPLAY.md).
+[netplay]
+required_disc_fps = [
+    "8930eda6345f1cd032e3d616df9d0a693255e88f0527d45ffea98b7423c8106a",
+    "fb1708d9c53544ee67acdc29cf815dd16caae5c13cd5fd48240509f160d83eba",
+]
+require_cue = true
+required_tracks = 1
+required_disc_fp = "8930eda6345f1cd032e3d616df9d0a693255e88f0527d45ffea98b7423c8106a"
